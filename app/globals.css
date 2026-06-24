@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-fraunces: "Fraunces", serif;
+  --font-inter: "Inter", sans-serif;
+  --font-jetbrains: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  * {
+    border-color: rgba(201, 162, 39, 0.12);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #060d17;
+    color: #f8f7f3;
+    font-feature-settings: "ss01" on, "cv01" on;
+  }
+  ::selection {
+    background-color: rgba(201, 162, 39, 0.35);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid #c9a227;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* Glass panel — the membrane between navy depth and gold light */
+  .glass {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(201, 162, 39, 0.16);
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl transition-all duration-300;
+  }
+  .glass-card:hover {
+    border-color: rgba(201, 162, 39, 0.4);
+    box-shadow: 0 20px 60px -20px rgba(201, 162, 39, 0.25);
+    transform: translateY(-4px);
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs tracking-[0.25em] uppercase text-gold-500;
+  }
+
+  .gold-line {
+    background: linear-gradient(90deg, transparent, #c9a227, transparent);
+    height: 1px;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 px-6 py-3 font-sans text-sm font-semibold text-navy-950 transition-all duration-300 hover:shadow-[0_0_30px_-5px_rgba(201,162,39,0.7)] hover:scale-[1.02];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-gold-500/30 px-6 py-3 font-sans text-sm font-semibold text-ivory transition-all duration-300 hover:bg-gold-500/10 hover:border-gold-500/60;
+  }
+
+  .section-title {
+    @apply font-display text-4xl md:text-5xl font-medium leading-[1.1] text-ivory;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-blueprint {
+    background-image: var(--tw-gradient-blueprint, none);
+  }
+}
