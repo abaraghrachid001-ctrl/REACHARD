@@ -1,13 +1,13 @@
 import { Badge } from "@/components/ui/badge";
 import type { Metadata } from "next";
 
-type Props = {
-  params: Promise<{
-    slug: string;
-  }>;
+type PageProps = {
+  params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: PageProps
+): Promise<Metadata> {
   const { slug } = await params;
 
   return {
@@ -17,7 +17,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export default async function Page(
+  { params }: PageProps
+) {
   const { slug } = await params;
 
   return (
@@ -37,9 +39,8 @@ export default async function BlogPostPage({ params }: Props) {
 
         <div className="prose prose-invert max-w-none text-ivory/70">
           <p>
-            Cet article technique sera alimenté depuis le CMS / la base de
-            données de Structura Maroc. Contenu détaillé, schémas et références
-            réglementaires viendront enrichir cette page.
+            Cet article technique sera alimenté depuis le CMS / la base de données
+            de Structura Maroc.
           </p>
         </div>
       </div>
